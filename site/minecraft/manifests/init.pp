@@ -1,7 +1,7 @@
-# Class: mincraft
+# Class: minecraft
 #
-class mincraft {
-	file { '/opt/mincraft':
+class minecraft {
+	file { '/opt/minecraft':
 		ensure => directory,
 	}
 	file { '/opt/minecraft/server.jar':
