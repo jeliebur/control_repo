@@ -21,6 +21,6 @@ class minecraft {
 	service {'minecraft':
 		ensure  => running,
 		enable  => true,
-		require => [Package['java'],File['/opt/minecraft/elua.txt'],File['/etc/systemd/system/minecraft.service']],
+		require => [Package['java'],File['/opt/minecraft/eula.txt'],File['/etc/systemd/system/minecraft.service']],
 	}
 }
