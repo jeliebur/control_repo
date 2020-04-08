@@ -1,6 +1,7 @@
-class minecraft {
-	$url = 'https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar'
-	$install_dir = '/opt/minecraft'
+class minecraft (
+	$url = 'https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar',
+	$install_dir = '/opt/minecraft',
+){
 	file { $install_dir:
 		ensure => directory,
 	}
@@ -17,8 +18,10 @@ class minecraft {
 		content => 'eula=true',
 	}
 	file {'/etc/systemd/system/minecraft.service':
-		ensure => file,
-		source => 'puppet:///modules/minecraft/minecraft.service',
+		ensure  => file,
+		content => epp('minecraft/mincraft.service',{
+			install_dir => $install_dir
+			})
 	}
 	service {'minecraft':
 		ensure  => running,
